@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas Car</title>
+</head>
+<body>
+   <canvas
+   width="1500"
+   height="690"
+   style="border: 5px solid black;"
+   id="canvas";
+   ></canvas>
+</body>
+<script>
+
+let canvas = document.getElementById("canvas");    
+let context =canvas.getContext("2d");   
+
+//sky
+context.beginPath();
+context.rect(0,0,1500,600);
+context.fillStyle="skyblue";
+context.fill();
+
+//ground
+context.beginPath();
+context.rect(0,600,1500,100);
+context.fillStyle="lightgreen";
+context.fill();
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

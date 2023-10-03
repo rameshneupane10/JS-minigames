@@ -3,48 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas</title>
+    <title>Arrow in the canvas</title>
 </head>
 <body>
-     <!-- for drawing a canvas -->
     <canvas
-
-    width="300"
-    height="300"
+    height="690";
+    width="1500";
+    style="border: 5px solid black;"
     id="canvas"
-    style="border: 2px solid black;"
-    >   
-    </canvas>
+    ></canvas>
 </body>
+
+
 <script>
-
-        let  canvas=document.getElementById("canvas"); //paper
-        let context = canvas.getContext("2d");        //pen
-        
-
-        //for traffic light background
-        context.beginPath();
-        context.fillStyle="black";
-        context.rect(0,0,200,100);
-        context.fill();
-
-        //for trafiic lights color
-        context.beginPath();
-        context.fillStyle="red";
-        context.arc(30,50,25,0,50);
-        context.fill();
-
-        context.beginPath();
-        context.fillStyle="orange";
-        context.arc(90,50,25,0,50);
-        context.fill();
-
-        context.beginPath();
-        context.fillStyle="green";
-        context.arc(150,50,25,0,50);
-        context.fill();
+   const canvas =document.getElementById("canvas");
+   const context =canvas.getContext("2d");
 
 
+   //creation of box inside canvas
+   canvas.addEventListener("mousemove",(event)=>
+   {
+     //sky
+   context.beginPath();
+   context.fillStyle="skyblue";
+   context.rect(0,0,1500,600);
+   context.fill();
+
+   //ground
+   context.beginPath();
+   context.fillStyle="lightgreen";
+   context.rect(0,600,1500,100);
+   context.fill();
+     console.log(event);
+
+     //blue
+    console.log(event.clientX,event.clientY);
+    context.beginPath();
+    context.fillStyle="blue";
+    context.arc(event.clientX,event.clientY,30,0,360);
+    context.fill();
+    
+    //red
+    console.log(event.clientX,event.clientY);
+    context.beginPath();
+    context.fillStyle="red";
+    context.arc(event.clientX,event.clientY,20,0,360);
+    context.fill();
+
+    //orange
+    console.log(event.clientX,event.clientY);
+    context.beginPath();
+    context.fillStyle="orange";
+    context.arc(event.clientX,event.clientY,10,0,360);
+    context.fill();
+
+   });
+   
+  
 
 </script>
 </html>
