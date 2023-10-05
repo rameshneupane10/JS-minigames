@@ -3,63 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrow in the canvas</title>
+    <title>Assignment 3</title>
 </head>
 <body>
     <canvas
-    height="690";
-    width="1500";
-    style="border: 5px solid black;"
-    id="canvas"
+        height="300";
+        width="300"
+        style="background-color: green;"
+        id="canvas"    
     ></canvas>
 </body>
-
-
 <script>
-   const canvas =document.getElementById("canvas");
-   const context =canvas.getContext("2d");
 
+    const canvas =document.getElementById("canvas");
+    const c=canvas.getContext("2d");
 
-   //creation of box inside canvas
-   canvas.addEventListener("mousemove",(event)=>
-   {
-     //sky
-   context.beginPath();
-   context.fillStyle="skyblue";
-   context.rect(0,0,1500,600);
-   context.fill();
-
-   //ground
-   context.beginPath();
-   context.fillStyle="lightgreen";
-   context.rect(0,600,1500,100);
-   context.fill();
-     console.log(event);
-
-     //blue
-    console.log(event.clientX,event.clientY);
-    context.beginPath();
-    context.fillStyle="blue";
-    context.arc(event.clientX,event.clientY,30,0,360);
-    context.fill();
-    
-    //red
-    console.log(event.clientX,event.clientY);
-    context.beginPath();
-    context.fillStyle="red";
-    context.arc(event.clientX,event.clientY,20,0,360);
-    context.fill();
-
-    //orange
-    console.log(event.clientX,event.clientY);
-    context.beginPath();
-    context.fillStyle="orange";
-    context.arc(event.clientX,event.clientY,10,0,360);
-    context.fill();
-
-   });
-   
-  
+    let x=0;
+    let y=0;
+    canvas.addEventListener("click",(event)=>
+    {
+        x=event.clientX;
+        y=event.clientY;
+    });
+    function update ()
+    {
+        c.clearRect(0,0,300,300);
+        c.beginPath();
+        c.arc(x,y,20,0,360);
+        c.fillStyle="blue"
+        c.fill();
+       y=y+1;  
+        window.requestAnimationFrame(update);
+    }
+    update();
 
 </script>
 </html>
