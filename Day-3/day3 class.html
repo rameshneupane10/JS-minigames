@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+</head>
+<body>
+    <canvas
+        height="300";
+        width="300"
+        style="background-color: green;"
+        id="canvas"    
+    ></canvas>
+</body>
+<script>
+
+    const canvas =document.getElementById("canvas");
+    const c=canvas.getContext("2d");
+
+    let x=0;
+    let y=0;
+    canvas.addEventListener("click",(event)=>
+    {
+        x=event.clientX;
+        y=event.clientY;
+    });
+    function update ()
+    {
+        c.clearRect(0,0,300,300);
+        c.beginPath();
+        c.arc(x,y,20,0,360);
+        c.fillStyle="blue"
+        c.fill();
+        y+=1;  
+        window.requestAnimationFrame(update);
+    }
+    update();
+
+</script>
+</html>
