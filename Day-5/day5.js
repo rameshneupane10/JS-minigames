@@ -4,26 +4,48 @@ const c=canvas.getContext("2d");
 class Box{
     constructor()
     {
-        this.x=100;
-        this.y=100;
-        this.width=50;
-        this.height=50;
+       this.position={
+        x:100,
+        y:100,
+       };
+
+       this.size={
+        width:50,
+        height:50,
+       };
+
+       this.velocity={
+        x:1,
+        y:1
+       };
+
+       this.acceleration=0.2;
     }
 
     draw()
     {
         c.beginPath();
-        c.rect(this.x,this.y,this.width,this.height);
+        c.rect(this.position.x,this.position.y,this.size.width,this.size.height);
         c.fill();
     }
     move()
     {
-        this.y++;
+        this.velocity.y+=this.acceleration;
+        this.position.y+=this.velocity.y;
+    }
+
+    checkBoxCollision()
+    {
+        if (this.position.y + this.size.height > canvas.height) {
+            this.position.y = canvas.height - this.size.height;
+            this.velocity.y *= -0.8;
+        }
     }
     update()
     {
         this.draw();
         this.move();
+        this.checkBoxCollision();
     }
 }
 
