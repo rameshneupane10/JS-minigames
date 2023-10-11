@@ -22,11 +22,13 @@ class Box{
        this.acceleration=0.2;
     }
    
-
     draw()
     {
+
+        const basketball =new Image();
+        basketball.src = "./images/basketball.png";       
         c.beginPath();
-        c.rect(this.position.x,this.position.y,this.size.width,this.size.height);
+        c.drawImage(basketball,this.position.x,this.position.y,this.size.width,this.size.height);
         c.fill();
     }
     move()
@@ -55,11 +57,15 @@ class Box{
     }
 }
 
+
 const box =new Box();
 
 function animate()
 {
     c.clearRect(0,0,canvas.width,canvas.height);
+    const court = new Image();
+    court.src="./images/court.jpg"
+    c.drawImage(court,0,0,canvas.width,canvas.height);
     box.update();
     requestAnimationFrame(animate);
 }
